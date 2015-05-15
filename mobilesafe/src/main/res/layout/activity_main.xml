@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:title="http://schemas.android.com/apk/res/com.fwj.mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.fwj.mobilesafe.activity.MainActivity" >
+
+    <com.fwj.mobilesafe.view.TitleView
+        android:id="@+id/area_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        title:centretext="主菜单" />
+
+    <GridView
+        android:id="@+id/gv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/area_title"
+        android:numColumns="3"
+        android:text="@string/hello_world" />
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TitleView">
+        <attr name="lefttext" format="string" />
+        <attr name="centretext" format="string" />
+        <attr name="righttext" format="string" />
+        <attr name="left_l_icon" format="reference" />
+        <attr name="left_r_icon" format="reference" />
+        <attr name="centre_l_icon" format="reference" />
+        <attr name="centre_r_icon" format="reference" />
+        <attr name="right_l_icon" format="reference" />
+        <attr name="right_r_icon" format="reference" />
+    </declare-styleable>
+    <!-- name  给哪一个控件添加属性 -->
+    <declare-styleable name="com.fwj.mobilesafe.view.SettingView">
+        <attr name="centretitle" format="string" />
+        <attr name="des_on" format="string" />
+        <attr name="des_off" format="string" />
+    </declare-styleable>
+
+</resources>

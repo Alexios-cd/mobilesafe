@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_scanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:singleLine="true"
+        android:text="快速扫描"
+        android:textColor="#000000"
+        android:textSize="17sp" />
+
+    <ProgressBar
+        android:id="@+id/pb_process"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:progressDrawable="@drawable/process_horizontal" />
+    <Button
+        android:id="@+id/btn_all"
+         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="全部清理"
+        android:background="@drawable/selector_select_contacts"
+        android:visibility="invisible"/>
+
+    <ListView
+        android:id="@+id/lv_cache"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+
+</LinearLayout>

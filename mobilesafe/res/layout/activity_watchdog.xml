@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<ImageView 
+	    android:id="@+id/iv_icon"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/ic_launcher"/>
+	<TextView 
+	    android:id="@+id/tv_name"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:textSize="20sp"
+	    android:textColor="#000000"
+	    android:text="手机卫士"/>
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword" >
+
+    </EditText>
+
+    <Button
+        android:onClick="unlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解锁" />
+
+</LinearLayout>

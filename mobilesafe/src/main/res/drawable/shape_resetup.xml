@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+    <!--
+         <solid android:color="#ff0000" >
+    </solid>
+    -->
+    <corners android:radius="5dp" >
+    </corners>
+    <gradient
+        android:centerColor="#33000000"
+        android:endColor="#99000000"
+        android:startColor="#99000000"
+        android:type="linear" >
+    </gradient>
+
+    <!-- <stroke android:width="3dp" android:color="#00ff00" android:dashWidth="3dp" android:dashGap="10dp"></stroke> -->
+
+</shape><!--
+      shape  定义图形的样式 rectangle 矩形 
+	solid  定义图形的颜色
+	corners  圆角的弧度
+	gradient 颜色渐变    如果定义gradient,solid 失效
+	stroke  定义图片的边框 width 边框的宽度 color  边框的颜色   dashWidth 点的宽度dashGap 点的间距
+-->
