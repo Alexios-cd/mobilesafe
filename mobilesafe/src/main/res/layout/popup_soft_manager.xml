@@ -3,13 +3,17 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:padding="0dp"
+    android:gravity="center_vertical"
     android:background="@drawable/local_popup_bg" >
 
     <LinearLayout
         android:id="@+id/ll_uninstall"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:orientation="vertical" >
 
         <ImageView
@@ -26,8 +30,10 @@
     <LinearLayout
         android:id="@+id/ll_start"
         android:layout_width="wrap_content"
+        android:paddingLeft="15dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical" >
 
         <ImageView
@@ -45,7 +51,10 @@
         android:id="@+id/ll_shared"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="10dp"
+        android:layout_margin="10dp"
+        android:paddingRight="10dp"
         android:orientation="vertical" >
 
         <ImageView

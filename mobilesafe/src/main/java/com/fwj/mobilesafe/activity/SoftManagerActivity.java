@@ -1,8 +1,5 @@
 package com.fwj.mobilesafe.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -33,12 +30,13 @@ import com.fwj.mobilesafe.base.BaseActivity;
 import com.fwj.mobilesafe.db.dao.WatchDogDao;
 import com.fwj.mobilesafe.domain.AppInfo;
 import com.fwj.mobilesafe.engine.AppProvider;
-import com.fwj.mobilesafe.service.WatchDogService;
 import com.fwj.mobilesafe.uitils.DensityUtil;
 import com.fwj.mobilesafe.uitils.DialogUtils;
 import com.fwj.mobilesafe.uitils.MyAsykTask;
 import com.fwj.mobilesafe.uitils.ToastUtils;
-import com.fwj.mobilesafe.uitils.adpter.CommonAdater;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ================================
@@ -167,7 +165,7 @@ public class SoftManagerActivity extends BaseActivity implements
 				// 指定位置显示popupWindow parent popupWindow挂载的父容器
 				// 显示popup
 				popupWindow.showAtLocation(parent, Gravity.TOP | Gravity.LEFT,
-						x + DensityUtil.dp2px(SoftManagerActivity.this, 50), y);
+						x + DensityUtil.dp2px(SoftManagerActivity.this, 60), y);
 				// dp 比例 像素和屏幕密度比例
 
 				AlphaAnimation alphaAnimation = new AlphaAnimation(0.4f, 1);
@@ -361,18 +359,18 @@ public class SoftManagerActivity extends BaseActivity implements
 		// <category android:name="android.intent.category.DEFAULT" />
 		// <data android:mimeType="text/plain" />
 		// </intent-filter>
-		// Intent intent=new Intent();
-		// intent.setAction("android.intent.action.SEND");
-		// intent.setType("text/plain");
-		// intent.putExtra(Intent.EXTRA_TEXT,
-		// "推荐您使用一款软件"+appInfo.getName()+",下载地址google市场");
-		// startActivity(intent);
+		 Intent intent=new Intent();
+		 intent.setAction("android.intent.action.SEND");
+		 intent.setType("text/plain");
+		 intent.putExtra(Intent.EXTRA_TEXT,
+		 "推荐您使用一款软件"+appInfo.getName()+",下载地址google市场");
+		 startActivity(intent);
 
 		// 详细信息
-		Intent intent = new Intent();
-		intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-		intent.setData(Uri.parse("package:" + appInfo.getPackageName()));
-		startActivity(intent);
+//		Intent intent = new Intent();
+//		intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+//		intent.setData(Uri.parse("package:" + appInfo.getPackageName()));
+//		startActivity(intent);
 	}
 
 	/**
