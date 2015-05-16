@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlSerializer;
@@ -32,12 +33,10 @@ public class SmsEngine {
 			Cursor cursor = contentResolver.query(uri, new String[] { "address",
 					"date", "type", "body" }, null, null, null);
 			int max=cursor.getCount();
-			//dialog.setMax(max);
-		//	pb_process.setMax(max);
 			listener.max(max);
 			int count=0;
 			while(cursor.moveToNext()){
-				Thread.sleep(500);
+				Thread.sleep(10);
 				serializer.startTag(null, "sms");
 				
 				serializer.startTag(null, "address");
@@ -57,15 +56,18 @@ public class SmsEngine {
 				
 				serializer.startTag(null, "body");
 				String body=cursor.getString(3);
-				serializer.text(body);
+				try {
+					serializer.text(body);
+				} catch (Exception e) {
+					Log.e("SMSS","短信内容包含特殊字符，做特殊备份");
+					serializer.text("…………特殊短信…………");
+				}
 				serializer.endTag(null, "body");
 				
 				
 				serializer.endTag(null, "sms");
 				count++;
 				listener.process(count);
-				//dialog.setProgress(count);
-				//pb_process.setProgress(count);
 			}
 			serializer.endTag(null, "smss");
 			serializer.endDocument();// 结束

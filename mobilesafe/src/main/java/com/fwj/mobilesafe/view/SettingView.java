@@ -41,13 +41,13 @@ public class SettingView extends RelativeLayout {
 		// System.out.println(attrs.getAttributeValue(4));
 		// System.out.println(attrs.getAttributeValue(5));
 		String title = attrs.getAttributeValue(
-				"http://schemas.android.com/apk/res/com.fwj.mobilesafe",
+				"http://schemas.android.com/apk/res/res-auto",
 				"title");
 		des_on = attrs.getAttributeValue(
-				"http://schemas.android.com/apk/res/com.fwj.mobilesafe",
+				"http://schemas.android.com/apk/res/res-auto",
 				"des_on");
 		des_off = attrs.getAttributeValue(
-				"http://schemas.android.com/apk/res/com.fwj.mobilesafe",
+				"http://schemas.android.com/apk/res/res-auto",
 				"des_off");
 
 		setTitle(title);

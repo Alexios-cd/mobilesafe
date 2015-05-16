@@ -11,6 +11,7 @@ import com.fwj.mobilesafe.R;
 import com.fwj.mobilesafe.base.BaseActivity;
 import com.fwj.mobilesafe.base.SmsEngine;
 import com.fwj.mobilesafe.base.SmsEngine.ProcessListener;
+import com.fwj.mobilesafe.uitils.UIUtils;
 
 /**
  * ================================
@@ -49,6 +50,8 @@ public class AtoolsActivity extends BaseActivity {
 
 	public void backupSms(View v) {
 		dialog = new ProgressDialog(this);
+		dialog.setTitle("正在备份短信……");
+		dialog.setIcon(R.drawable.ic_launcher);
 		dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);// 设置成水平样式的dialog
 		dialog.show();
 		new Thread() {
@@ -67,6 +70,7 @@ public class AtoolsActivity extends BaseActivity {
 							}
 						});
 				dialog.dismiss();
+				UIUtils.showToastSafe("备份结束");
 			};
 		}.start();
 	}
