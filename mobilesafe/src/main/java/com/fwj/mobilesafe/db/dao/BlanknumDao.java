@@ -1,8 +1,5 @@
 package com.fwj.mobilesafe.db.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.fwj.mobilesafe.db.BlankNumOpenHelper;
 import com.fwj.mobilesafe.domain.BlankNumInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlanknumDao {
 	public static final int MODE_SMS = 1;
@@ -25,62 +25,47 @@ public class BlanknumDao {
 	}
 
 	/**
-	 * ��Ӻ�����
-	 * 
+	 * 增加黑名单
 	 * @param num
-	 *            ����������
 	 * @param mode
-	 *            ������������ģʽ
 	 */
 	public void addBlanknum(String num, int mode) {
-		// helper.getReadableDatabase(); // û�м��������ݿ�
-		SQLiteDatabase sql = helper.getWritableDatabase();// ���������ݿ�
+		// helper.getReadableDatabase();
+		SQLiteDatabase sql = helper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put("blanknum", num);
 		values.put("mode", mode);
-		// ����
 		sql.insert("info", null, values);
 
 		sql.close();
 	}
 
-	/**
-	 * ɾ��������
-	 * 
-	 * @param num
-	 *            ���ݵ绰����ɾ��
-	 */
 	public void deleteBlankNum(String num) {
-		SQLiteDatabase sql = helper.getWritableDatabase();// ���������ݿ�
+		SQLiteDatabase sql = helper.getWritableDatabase();
 		sql.delete("info", "blanknum=?", new String[] { num });
 		sql.close();
 	}
 
 	/**
-	 * �޸ĺ�����������ģʽ
-	 * 
+	 * 更新号码模式
 	 * @param num
 	 * @param mode
-	 *            �µ�����ģʽ
 	 */
 	public void updateBlanckNumMode(String num, int mode) {
-		SQLiteDatabase sql = helper.getWritableDatabase();// ���������ݿ�
+		SQLiteDatabase sql = helper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put("mode", mode);
-		// ����
 		sql.update("info", values, "blanknum=?", new String[] { num });
 	}
 
 	/**
-	 * ��ѯ������������ģʽ
-	 * 
+	 * 查询号码类型
 	 * @param num
-	 * @return -1 ����û�в�ѯ���κν�� 0 tel 1 sms 2 all
+	 * @return
 	 */
 	public int queryMode(String num) {
 		int mode = -1;
 		SQLiteDatabase sql = helper.getReadableDatabase();
-		// 1���� 2Ҫ��ѯ���� 3 ��ѯ���� 4 ������Ӧ����
 		Cursor c = sql.query("info", new String[] { "mode" }, "blanknum=?",
 				new String[] { num }, null, null, null);
 		if (c.moveToNext()) {
@@ -94,8 +79,7 @@ public class BlanknumDao {
 	}
 
 	/**
-	 * ����ȫ������������
-	 * 
+	 * 查询所有黑名单
 	 * @return
 	 */
 	public List<BlankNumInfo> queryAll() {
@@ -120,11 +104,6 @@ public class BlanknumDao {
 
 	}
 
-	/**
-	 * ���ز��ֺ���������
-	 * 
-	 * @return
-	 */
 	public List<BlankNumInfo> queryPart(int maxNum, int startIndex) {
 		try {
 			Thread.sleep(300);
