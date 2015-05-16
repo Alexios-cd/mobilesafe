@@ -1,15 +1,15 @@
 package com.fwj.mobilesafe.base;
 
-import java.io.File;
-import java.io.FileOutputStream;
-
-import org.xmlpull.v1.XmlSerializer;
-
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Xml;
+
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class SmsEngine {
 	//  定义一个接口
