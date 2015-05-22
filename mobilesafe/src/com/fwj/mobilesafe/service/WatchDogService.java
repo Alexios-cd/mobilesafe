@@ -79,7 +79,7 @@ public class WatchDogService extends Service {
 
 		receiver = new UnlockReceiver();
 		IntentFilter filter = new IntentFilter();
-		filter.addAction("com.itheima.mobilesafe.unlock");
+		filter.addAction("com.fwj.mobilesafe.unlock");
 		registerReceiver(receiver, filter);
 
 		dao = new WatchDogDao(this);

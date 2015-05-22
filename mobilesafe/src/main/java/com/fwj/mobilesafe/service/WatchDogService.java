@@ -1,7 +1,5 @@
 package com.fwj.mobilesafe.service;
 
-import java.util.List;
-
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.app.Service;
@@ -17,6 +15,8 @@ import android.os.IBinder;
 
 import com.fwj.mobilesafe.activity.WatchDogActivity;
 import com.fwj.mobilesafe.db.dao.WatchDogDao;
+
+import java.util.List;
 
 public class WatchDogService extends Service {
 	private WatchDogDao dao;
@@ -79,7 +79,7 @@ public class WatchDogService extends Service {
 
 		receiver = new UnlockReceiver();
 		IntentFilter filter = new IntentFilter();
-		filter.addAction("com.itheima.mobilesafe.unlock");
+		filter.addAction("com.fwj.mobilesafe.unlock");
 		registerReceiver(receiver, filter);
 
 		dao = new WatchDogDao(this);

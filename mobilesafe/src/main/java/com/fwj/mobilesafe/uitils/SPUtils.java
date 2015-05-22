@@ -3,135 +3,13 @@ package com.fwj.mobilesafe.uitils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * PreferencesUtils, easy to get or put data
- * <ul>
- * <strong>Preference Name</strong>
- * <li>you can change preference name by {@link #PREFERENCE_NAME}</li>
- * </ul>
- * <ul>
- * <strong>Put Value</strong>
- * <li>put string {@link #putString(Context, String, String)}</li>
- * <li>put int {@link #putInt(Context, String, int)}</li>
- * <li>put long {@link #putLong(Context, String, long)}</li>
- * <li>put float {@link #putFloat(Context, String, float)}</li>
- * <li>put boolean {@link #putBoolean(Context, String, boolean)}</li>
- * </ul>
- * <ul>
- * <strong>Get Value</strong>
- * <li>get string {@link #getString(Context, String)},
- * {@link #getString(Context, String, String)}</li>
- * <li>get int {@link #getInt(Context, String)},
- * {@link #getInt(Context, String, int)}</li>
- * <li>get long {@link #getLong(Context, String)},
- * {@link #getLong(Context, String, long)}</li>
- * <li>get float {@link #getFloat(Context, String)},
- * {@link #getFloat(Context, String, float)}</li>
- * <li>get boolean {@link #getBoolean(Context, String)},
- * {@link #getBoolean(Context, String, boolean)}</li>
- * </ul>
- * 
- */
+
 public class SPUtils {
 
-	/**
-	 * 配置文件名
-	 */
-	public static final String ISFRISTIN = "is_fristin";
-	public static final String PREFERENCE_NAME = "SJQCONFIG";
-	/**
-	 * 活动的链接
-	 */
-	public static final String ACTIVITY_URL = "sjqactivity_url";
-	/**
-	 * 活动的标题
-	 */
-	public static final String ACTIVITY_TITLE = "sjqactivity_title";
-	public static final String TELL = "mytell";
-	/**
-	 * 商情页面下拉刷新时顶部显示的字体
-	 */
-	public static String CONJUNCTUREPAGERPULLDOWNREFRESH_TOPMSG = "conjuncturePagerpulldownRefreshfont";
-	/**
-	 * 程序启动界面的时间
-	 */
-	public static String SPLASH_TIME = "splash_time";
-	/**
-	 * 程序启动界面需要分享的url
-	 */
 
-	public static String SPLASH_SHARE_URL = "share_url";
-	/**
-	 * 程序启动界面需要 分享 内容的标题
-	 */
-	public static String SPLASH_SHARE_TITLE = "share_title";
-	/**
-	 * 程序启动界面需要分享的内容正文
-	 */
-	public static String SPLASH_SHARE_INFO = "share_info";
-	/**
-	 * 程序启动界面需要分享的内容图片的url
-	 */
-	public static String SPLASH_SHARE_IMG = "share_img";
-	/**
-	 * 通讯录页面下拉刷新时顶部显示的字体
-	 */
-	public static String ADDRESSBOOKPAGERPULLDOWNREFRESH_TOPMSG = "addressBookPagerpulldownRefresh";
-
-	/**
-	 * app客服qq号码(动态 配置)
-	 */
-	public static String APPCONFIG_QQ_NUM = "appConfig_qq_num";
-	/**
-	 * app客服电话(动态 配置)
-	 */
-	public static String APPCONFIG_TEL_NUM = "appConfig_tel_num";
-	/**
-	 * app客服微信(动态 配置)
-	 */
-	public static String APPCONFIG_MICROMSG_NUM = "appConfig_micromsg_num";
-	/**
-	 * app客服公司地址（动态配置）
-	 */
-	public static String APPCONFIG_ADDRESS = "appConfig_address";
-	/**
-	 * app分享标题（动态配置）
-	 */
-	public static String APPCONFIG_SHARE_TITLE = "appConfig_share_title";
-	/**
-	 * app分享内容（动态配置）
-	 */
-	public static String APPCONFIG_SHARE_INFO = "appConfig_share_info";
-	/**
-	 * app客服默认分享图片(动态 配置)
-	 */
-	public static String APPCONFIG_SHARE_ICON = "appConfig_app_share_icon";
-	/**
-	 * 商情详情默认分享图片(动态 配置)
-	 */
-	public static String APPCONFIG_MARKET_SHARE_ICON = "appConfig_market_share_icon";
-
-	/**
-	 * 判断在商情条目和商情详情页面是否需要发送消息
-	 */
-	public static String ISNEEDTOSENDMARKET = "IsNeedToSendMarket";
-
-	/**
-	 * 应用开启界面的启动图
-	 */
-	public static String GETLAUNCHIMGURL = "getLaunchImgurl";
-
-	public static String LOGINNUM = "loginnum";
-	public static String ISLOGIN = "islogin";
-	public static String NAME = "name";
-	public static String PWD = "pwd";
-	public static String UID = "uid";
-	public static String U = "U";
-	public static String PROVINCE_ID = "province_id";
-	public static String CITY_ID = "city_id";
-	public static String CITY = "city";
-	public static String PROVINCE = "province";
-	public static String ISNEEDACTIVITY = "isneedactivity";
+	private static final String PREFERENCE_NAME = PackageUtils.getAppName()+".config";
+	public static java.lang.String IsRunWatchDogService = "IsRunWatchDogService";
+	public static java.lang.String IsRunAddressService = "IsRunAddressService";
 
 	private SPUtils() {
 		throw new AssertionError();

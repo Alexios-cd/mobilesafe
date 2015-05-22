@@ -1,9 +1,5 @@
 package com.fwj.mobilesafe.service;
 
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.PendingIntent;
@@ -22,6 +18,10 @@ import com.fwj.mobilesafe.R;
 import com.fwj.mobilesafe.receiver.MyWigets;
 import com.fwj.mobilesafe.receiver.ScreenOffReceiver;
 import com.fwj.mobilesafe.uitils.TaskUtils;
+
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class WidgetsService extends Service {
 
@@ -88,7 +88,7 @@ public class WidgetsService extends Service {
 		
 		receiver=new ClearReceiver();
 		IntentFilter filter=new IntentFilter();
-		filter.addAction("com.itheima.mobilesafe.clearall");
+		filter.addAction("com.fwj.mobilesafe.clearall");
 		registerReceiver(receiver, filter);
 		
 		update();
@@ -121,7 +121,7 @@ public class WidgetsService extends Service {
 												WidgetsService.this,
 												TaskUtils
 														.getAvailableRam(WidgetsService.this)));
-				Intent intent=new Intent("com.itheima.mobilesafe.clearall");
+				Intent intent=new Intent("com.fwj.mobilesafe.clearall");
 				// 创建了延期意图 发送广播
 				PendingIntent pendingIntent = PendingIntent.getBroadcast(
 						WidgetsService.this, 0, intent,

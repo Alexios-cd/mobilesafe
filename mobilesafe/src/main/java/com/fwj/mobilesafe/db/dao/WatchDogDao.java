@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 import com.fwj.mobilesafe.db.WatchDogOpenHelper;
+import com.fwj.mobilesafe.uitils.LogUtils;
 
 public class WatchDogDao {
 
@@ -37,6 +38,7 @@ public class WatchDogDao {
 		// 发布一个通知  告诉观察当前数据库的内容观察者 数据有更新   uri (发布广告平台)
 		context.getContentResolver().notifyChange(Uri.parse("content://aaa.bbb.ccc"), null);
 		sql.close();
+		LogUtils.e(packageName+"加锁成功！");
 	}
 
 	/**
@@ -50,7 +52,7 @@ public class WatchDogDao {
 		sql.delete("info", "packagename=?", new String[] { packageName });
 		sql.close();
 		context.getContentResolver().notifyChange(Uri.parse("content://aaa.bbb.ccc"), null);
-
+		LogUtils.e(packageName + "解除锁成功！");
 	}
 	/**
 	 * 根据包名 查询是否在数据库中
@@ -69,6 +71,7 @@ public class WatchDogDao {
 		}
 		cursor.close();  // 几十毫秒 
 		sql.close();
+		LogUtils.i(packageName + "是否在数据库中"+flag);
 		return flag;
 
 	}

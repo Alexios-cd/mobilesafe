@@ -88,7 +88,7 @@ public class WidgetsService extends Service {
 		
 		receiver=new ClearReceiver();
 		IntentFilter filter=new IntentFilter();
-		filter.addAction("com.itheima.mobilesafe.clearall");
+		filter.addAction("com.fwj.mobilesafe.clearall");
 		registerReceiver(receiver, filter);
 		
 		update();
@@ -121,7 +121,7 @@ public class WidgetsService extends Service {
 												WidgetsService.this,
 												TaskUtils
 														.getAvailableRam(WidgetsService.this)));
-				Intent intent=new Intent("com.itheima.mobilesafe.clearall");
+				Intent intent=new Intent("com.fwj.mobilesafe.clearall");
 				// 创建了延期意图 发送广播
 				PendingIntent pendingIntent = PendingIntent.getBroadcast(
 						WidgetsService.this, 0, intent,

@@ -134,11 +134,7 @@ public class SoftManagerActivity extends BaseActivity implements
 				} else if (position == userInfos.size() + 1) {
 					return;
 				}
-				if (position <= userInfos.size()) {
-					appInfo = userInfos.get(position - 1);
-				} else {
-					appInfo = systemInfos.get(position - userInfos.size() - 2);
-				}
+				getAppInfo(position);
 				int[] location = new int[2];
 				view.getLocationInWindow(location); // 测量view的坐标 x 和 y 存放到数组中
 				int x = location[0];
@@ -233,7 +229,7 @@ public class SoftManagerActivity extends BaseActivity implements
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			if (position == 0) {
 				TextView tv = new TextView(getApplicationContext());
 				tv.setText("用户程序" + userInfos.size() + "个");
@@ -247,14 +243,10 @@ public class SoftManagerActivity extends BaseActivity implements
 				tv.setTextColor(Color.WHITE);
 				return tv;
 			}
-			
-			if (position <= userInfos.size()) {
-				appInfo = userInfos.get(position - 1);
-			} else {
-				appInfo = systemInfos.get(position - userInfos.size() - 2);
-			}
+
+			 getAppInfo(position);
 			View view = null;
-			ViewHolder holder = null;
+			 	ViewHolder holder = null;
 			// 保证convertView 不是textView 才可以复用view对象
 			if (convertView != null && convertView instanceof RelativeLayout) {
 				view = convertView;
@@ -280,13 +272,29 @@ public class SoftManagerActivity extends BaseActivity implements
 			} else {
 				holder.tv_position.setText("手机内存");
 			}
+			WatchDogDao dao = new WatchDogDao(SoftManagerActivity.this);
+			if(dao.queryPackageNameLocked(appInfo.getPackageName())){
+				holder.iv_lock.setImageResource(R.drawable.lock);
+				appInfo.setIsLocked(true);
+			}else{
+				holder.iv_lock.setImageResource(R.drawable.unlock);
+				appInfo.setIsLocked(false);
+			}
+
 			holder.iv_lock.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
+						getAppInfo(position);
+//					LogUtils.e(appInfo.getPackageName());
 					WatchDogDao dao = new WatchDogDao(SoftManagerActivity.this);
-					dao.addApp(appInfo.getPackageName());
-					
+					if(appInfo.isLocked()){
+						dao.deleteApp(appInfo.getPackageName());
+					}else {
+						dao.addApp(appInfo.getPackageName());
+					}
+					appInfo.setIsLocked(!appInfo.isLocked());
+					notifyDataSetChanged();
 				}
 			});
 
@@ -303,6 +311,16 @@ public class SoftManagerActivity extends BaseActivity implements
 			return 0;
 		}
 
+	}
+
+	private AppInfo getAppInfo(int position) {
+
+		if (position <= userInfos.size()) {
+            appInfo = userInfos.get(position - 1);
+        } else {
+            appInfo = systemInfos.get(position - userInfos.size() - 2);
+        }
+		return appInfo;
 	}
 
 	class ViewHolder {

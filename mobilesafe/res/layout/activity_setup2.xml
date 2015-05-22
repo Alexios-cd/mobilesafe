@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:itheima="http://schemas.android.com/apk/res/com.fwj.mobilesafe"
+    xmlns:fwj="http://schemas.android.com/apk/res/com.fwj.mobilesafe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -34,9 +34,9 @@
         android:id="@+id/sv_bind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        itheima:des_off="sim卡没有绑定"
-        itheima:des_on="sim卡已经绑定"
-        itheima:title="点击绑定sim卡" >
+        fwj:des_off="sim卡没有绑定"
+        fwj:des_on="sim卡已经绑定"
+        fwj:title="点击绑定sim卡" >
     </com.fwj.mobilesafe.view.SettingView>
 
     <LinearLayout

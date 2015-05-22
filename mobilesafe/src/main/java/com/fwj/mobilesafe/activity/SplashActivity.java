@@ -19,6 +19,9 @@ import android.widget.TextView;
 
 import com.fwj.mobilesafe.R;
 import com.fwj.mobilesafe.base.BaseActivity;
+import com.fwj.mobilesafe.service.AddressService;
+import com.fwj.mobilesafe.service.WatchDogService;
+import com.fwj.mobilesafe.uitils.SPUtils;
 import com.fwj.mobilesafe.uitils.StreamUtils;
 import com.fwj.mobilesafe.uitils.ToastUtils;
 import com.lidroid.xutils.HttpUtils;
@@ -149,12 +152,12 @@ public class SplashActivity extends BaseActivity {
 		}
 		copyDb("address.db");
 		copyDb("antivirus.db");
-		//
-		// Intent intent=new Intent(this, AddressService.class);
-		// startService(intent);
-
-		// Intent intent=new Intent(this, WatchDogService.class);
-		// startService(intent);
+		if(SPUtils.getBoolean(SPUtils.IsRunAddressService)) {
+			startService(new Intent(this, AddressService.class));
+		}
+		if(SPUtils.getBoolean(SPUtils.IsRunWatchDogService)) {
+			startService(new Intent(this, WatchDogService.class));
+		}
 	}
 
 	private void copyDb(String dbName) {

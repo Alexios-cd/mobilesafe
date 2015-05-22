@@ -67,7 +67,7 @@ public class WatchDogActivity extends BaseActivity {
 	public void unlock(View v) {
 		String password = et_password.getText().toString().trim();
 		if ("123".equals(password)) {
-			Intent intent = new Intent("com.itheima.mobilesafe.unlock");
+			Intent intent = new Intent("com.fwj.mobilesafe.unlock");
 			// 解锁
 			// 把当前程序 添加到临时不加锁的对象中 activity->服务 传递数据
 			// 给服务发送广播

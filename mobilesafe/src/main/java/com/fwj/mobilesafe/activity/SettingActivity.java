@@ -14,6 +14,7 @@ import com.fwj.mobilesafe.base.BaseActivity;
 import com.fwj.mobilesafe.service.AddressService;
 import com.fwj.mobilesafe.service.BlacknumService;
 import com.fwj.mobilesafe.service.WatchDogService;
+import com.fwj.mobilesafe.uitils.SPUtils;
 import com.fwj.mobilesafe.uitils.ServiceUtils;
 import com.fwj.mobilesafe.view.SettingClickView;
 import com.fwj.mobilesafe.view.SettingView;
@@ -68,7 +69,7 @@ public class SettingActivity extends BaseActivity {
 	private void blacknum() {
 		// 动态判断服务是否开启
 		if (ServiceUtils.isRunningService(
-				"com.itheima.mobilesafe.service.BlacknumService", this)) {
+				"com.fwj.mobilesafe.service.BlacknumService", this)) {
 			sv_blacknum.setChecked(true);
 		} else {
 			sv_blacknum.setChecked(false);
@@ -154,10 +155,13 @@ public class SettingActivity extends BaseActivity {
 	private void watchdog() {
 		// 动态判断服务是否开启
 		if (ServiceUtils.isRunningService(
-				"com.itheima.mobilesafe.service.WatchDogService", this)) {
+				"com.fwj.mobilesafe.service.WatchDogService", this)) {
 			sv_watchdog.setChecked(true);
+
+
 		} else {
 			sv_watchdog.setChecked(false);
+
 		}
 
 		sv_watchdog.setOnClickListener(new OnClickListener() {
@@ -169,10 +173,11 @@ public class SettingActivity extends BaseActivity {
 				if (sv_watchdog.isChecked()) {
 					sv_watchdog.setChecked(false);
 					stopService(intent);
+					SPUtils.putBoolean(SPUtils.IsRunWatchDogService, false);
 				} else {
 					sv_watchdog.setChecked(true);
-
 					startService(intent);
+					SPUtils.putBoolean(SPUtils.IsRunWatchDogService, true);
 				}
 			}
 		});
@@ -181,10 +186,12 @@ public class SettingActivity extends BaseActivity {
 	private void address() {
 		// 动态判断服务是否开启
 		if (ServiceUtils.isRunningService(
-				"com.itheima.mobilesafe.service.AddressService", this)) {
+				"com.fwj.mobilesafe.service.AddressService", this)) {
 			sv_address.setChecked(true);
+			SPUtils.putBoolean(SPUtils.IsRunAddressService, true);
 		} else {
 			sv_address.setChecked(false);
+			SPUtils.putBoolean(SPUtils.IsRunAddressService, false);
 		}
 
 		sv_address.setOnClickListener(new OnClickListener() {

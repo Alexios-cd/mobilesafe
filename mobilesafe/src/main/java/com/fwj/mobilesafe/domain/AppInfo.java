@@ -7,6 +7,16 @@ import android.graphics.drawable.Drawable;
  *
  */
 public class AppInfo {
+	private boolean IsLocked;
+
+	public boolean isLocked() {
+		return IsLocked;
+	}
+
+	public void setIsLocked(boolean isLocked) {
+		IsLocked = isLocked;
+	}
+
 	private String name;
 	private String version;
 	private String packageName;
