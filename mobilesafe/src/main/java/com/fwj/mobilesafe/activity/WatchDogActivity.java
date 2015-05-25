@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.fwj.mobilesafe.R;
 import com.fwj.mobilesafe.base.BaseActivity;
+import com.fwj.mobilesafe.uitils.SPUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -66,7 +68,7 @@ public class WatchDogActivity extends BaseActivity {
 
 	public void unlock(View v) {
 		String password = et_password.getText().toString().trim();
-		if ("123".equals(password)) {
+		if ((TextUtils.isEmpty(SPUtils.getString(SPUtils.WATCHDODPASSWORD)) &&"123".equals(password))||password.equals(SPUtils.getString(SPUtils.WATCHDODPASSWORD))) {
 			Intent intent = new Intent("com.fwj.mobilesafe.unlock");
 			// 解锁
 			// 把当前程序 添加到临时不加锁的对象中 activity->服务 传递数据

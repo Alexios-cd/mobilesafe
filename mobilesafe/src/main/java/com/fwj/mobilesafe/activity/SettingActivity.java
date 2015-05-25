@@ -6,8 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 import com.fwj.mobilesafe.R;
 import com.fwj.mobilesafe.base.BaseActivity;
@@ -20,6 +22,7 @@ import com.fwj.mobilesafe.view.SettingClickView;
 import com.fwj.mobilesafe.view.SettingView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * ================================
@@ -49,7 +52,10 @@ public class SettingActivity extends BaseActivity {
 	private SettingView sv_blacknum;
 	@ViewInject(R.id.sv_watchdog)
 	private SettingView sv_watchdog;
+	@ViewInject(R.id.sv_watchdog_key)
+	private SettingView sv_watchdog_key;
 	private SharedPreferences sp;
+
 
 	@Override
 	protected void initView() {
@@ -125,7 +131,7 @@ public class SettingActivity extends BaseActivity {
 							// which 代表点击的条目的位置
 							@Override
 							public void onClick(DialogInterface dialog,
-									int which) {
+												int which) {
 								Editor edit = sp.edit();
 								edit.putInt("which", which);
 								edit.commit();
@@ -161,6 +167,12 @@ public class SettingActivity extends BaseActivity {
 
 		} else {
 			sv_watchdog.setChecked(false);
+
+		}
+		if(TextUtils.isEmpty(SPUtils.getString(SPUtils.WATCHDODPASSWORD))){
+			sv_watchdog_key.setChecked(false);
+		}else {
+			sv_watchdog_key.setChecked(true);
 
 		}
 
@@ -240,6 +252,25 @@ public class SettingActivity extends BaseActivity {
 				edit.commit();
 			}
 		});
+	}
+	@OnClick(R.id.sv_watchdog_key)
+	public  void setSatchdogPassword(View view){
+
+		final Builder builder = new Builder(this);
+		builder.setIcon(R.drawable.ic_launcher);
+		builder.setTitle("请输入软件锁密码：");
+		final EditText editText = new EditText(SettingActivity.this);
+		builder.setView(editText);
+		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				String text = editText.getText().toString().trim();
+				SPUtils.putString(SPUtils.WATCHDODPASSWORD,text);
+			}
+		});
+		builder.setNegativeButton("取消", null);
+		builder.show();
+
 	}
 
 }

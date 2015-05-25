@@ -10,6 +10,7 @@ public class SPUtils {
 	private static final String PREFERENCE_NAME = PackageUtils.getAppName()+".config";
 	public static java.lang.String IsRunWatchDogService = "IsRunWatchDogService";
 	public static java.lang.String IsRunAddressService = "IsRunAddressService";
+	public static String WATCHDODPASSWORD = "WatchDogPassword";
 
 	private SPUtils() {
 		throw new AssertionError();

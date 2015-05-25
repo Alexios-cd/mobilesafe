@@ -64,6 +64,14 @@
             fwj:des_on="软件锁开启"
             fwj:title="软件锁" >
         </com.fwj.mobilesafe.view.SettingView>
+        <com.fwj.mobilesafe.view.SettingView
+            android:id="@+id/sv_watchdog_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            fwj:des_off="软件锁默认密码123"
+            fwj:des_on="软件锁已设置"
+            fwj:title="软件锁密码" >
+        </com.fwj.mobilesafe.view.SettingView>
     </LinearLayout>
 
 </ScrollView>
