@@ -50,6 +50,8 @@ public class SettingView extends RelativeLayout {
 				"http://schemas.android.com/apk/res-auto",
 				"des_off");
 
+
+
 		setTitle(title);
 		if (cb.isChecked()) {
 			setDes(des_on);
@@ -115,6 +117,14 @@ public class SettingView extends RelativeLayout {
 			setDes(des_on);
 		} else {
 			setDes(des_off);
+		}
+	}
+	public  void setCheckDissmis(boolean isDissmis){
+		if(isDissmis){
+			cb.setVisibility(View.GONE);
+		}else {
+			cb.setVisibility(View.VISIBLE);
+
 		}
 	}
 }

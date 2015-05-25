@@ -18,6 +18,7 @@ import com.fwj.mobilesafe.service.BlacknumService;
 import com.fwj.mobilesafe.service.WatchDogService;
 import com.fwj.mobilesafe.uitils.SPUtils;
 import com.fwj.mobilesafe.uitils.ServiceUtils;
+import com.fwj.mobilesafe.uitils.ToastUtils;
 import com.fwj.mobilesafe.view.SettingClickView;
 import com.fwj.mobilesafe.view.SettingView;
 import com.lidroid.xutils.ViewUtils;
@@ -159,6 +160,7 @@ public class SettingActivity extends BaseActivity {
 	}
 
 	private void watchdog() {
+		sv_watchdog_key.setCheckDissmis(true);
 		// 动态判断服务是否开启
 		if (ServiceUtils.isRunningService(
 				"com.fwj.mobilesafe.service.WatchDogService", this)) {
@@ -265,7 +267,11 @@ public class SettingActivity extends BaseActivity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				String text = editText.getText().toString().trim();
-				SPUtils.putString(SPUtils.WATCHDODPASSWORD,text);
+				if (TextUtils.isEmpty(text)) {
+					ToastUtils.TextToast("密码不能为空，设置失效。");
+				} else {
+					SPUtils.putString(SPUtils.WATCHDODPASSWORD, text);
+				}
 			}
 		});
 		builder.setNegativeButton("取消", null);
