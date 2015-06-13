@@ -61,7 +61,7 @@ public abstract class SetupBaseActivity extends BaseActivity {
 			float endX = e2.getRawX();
 			float startY = e1.getRawY();
 			float endY = e2.getRawY();
-			if (Math.abs(startY - endY) > 50) {
+			if (Math.abs(startY - endY) > 200) {
 				ToastUtils.TextToast("不要乱滑");
 				return true;
 			}
