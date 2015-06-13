@@ -63,7 +63,7 @@
 
         <Button
             android:id="@+id/btn_clear"
-            android:layout_width="90.0dip"
+            android:layout_width="105.0dip"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginTop="5.0dip"
